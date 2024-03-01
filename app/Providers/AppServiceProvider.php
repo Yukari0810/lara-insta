@@ -6,6 +6,7 @@ use Illuminate\Database\Schema\Builder;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Paginator::useBootstrap();
-        Builder::defaultStringLength(191);
+        Schema::defaultStringLength(199);
 
         if(config('app.env') === 'production') {
             URL::forceScheme('https');
