@@ -146,6 +146,16 @@
                                     <div class="modal-body justify-content-center">
                                         {{-- 誰かがlikeを押していたら誰がlikeを押したのかをアイコンとユーザーネームで表示する --}}
                                         @foreach ($post->like as $liker)
+                                        @if ($liker->user->deleted_at)
+                                        <div class="row mb-2">
+                                            <div class="col text-end">
+                                                <i class="fa-regular fa-circle-user icon-sm text-danger avatar -sm"></i>
+                                            </div>
+                                            <div class="col d-flex align-items-center">
+                                                <p class="my-auto text-danger">deactivated user</p>
+                                            </div>
+                                        </div>
+                                        @else
                                         <div class="row mb-2">
                                             <div class="col text-end">
                                                 @if ($liker->user->avatar)
@@ -158,6 +168,7 @@
                                                 <p class="my-auto">{{$liker->user->name}}</p>
                                             </div>
                                         </div>
+                                        @endif
                                         @endforeach
                                     </div>
                                 </div>
